@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>List</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-	{% if messages %}
-	<ul class="messages">
-	    {% for message in messages %}
-	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-	    {% endfor %}
-	</ul>
-	{% endif %}
+{% block head_title %}List{% endblock head_title %}
 
-	
+{% block content %}
+
 <ol>
 {% for x in post_list %}
 	<a href="{{x.get_absolute_url}}"><li>{{x.title}}</li></a>
 {% endfor %}
 </ol>
 
-</body>
-</html>
+{% endblock content %}
