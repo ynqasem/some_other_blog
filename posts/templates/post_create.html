@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>So bored</title>
+</head>
+<body>
+	<form method="POST" action="{% url 'posts:create' %}">
+		{% csrf_token %}
+		{{form.as_p}}
+		<input type="submit" value="Create Post">
+	</form>
+</body>
+</html>
