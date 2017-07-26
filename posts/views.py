@@ -6,7 +6,7 @@ from django.contrib import messages
 
 
 def post_list(request):
-	obj_list = Post.objects.all()
+	obj_list = Post.objects.all()#.order_by("-timestamp","-updated")
 	context = {
 		"post_list": obj_list,
 	}
@@ -48,6 +48,6 @@ def post_update(request, post_id):
 
 def post_delete(request, post_id):
 	Post.objects.get(id=post_id).delete()
-	messages.warning(request, "Seriously bro?")
+	messages.danger(request, "Seriously bro?")
 	return redirect("posts:list")
 	
