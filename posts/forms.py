@@ -15,7 +15,7 @@ class PostForm(forms.ModelForm):
 class UserSignUp(forms.ModelForm):
 	class Meta:
 		model = User
-		fields = ['username', 'password']
+		fields = ['username', 'password', 'email']
 
 		widgets = {
 		'password': forms.PasswordInput(),
