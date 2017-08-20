@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br><br><br>
+	
+	<form action="{% url 'google_app:radius' %}" method="GET">
+		<input type="text" name="radius" placeholder="Seach for a place">
+		<input type="hidden" name='location' value="" id="location">
+		<input type="submit" value="Search" class="btn btn-primary">
+	</form>
+
+	<table class="table">
+		{% for result in response.results %}
+			<tr>
+				<td>{{result.name}}</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+<script>
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+function success(pos) {
+  var crd = pos.coords;
+  $("#location").val(crd.latitude+','+crd.longitude);
+};
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+};
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+</script>
+{% endblock content %}

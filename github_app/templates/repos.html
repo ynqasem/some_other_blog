@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<table class="table">
+		{% for repo in repos %}
+			<tr>
+				<td>{{repo.name}}</td>
+				<td>{{repo.full_name}}</td>
+				<td>{{repo.owner.login}}</td>
+				<td><a href= "{{repo.html_url}}" class="btn btn-primary">Go to repo</a></td>
+			</tr>
+		{% endfor %}
+
+	</table>
+{% endblock content %}
